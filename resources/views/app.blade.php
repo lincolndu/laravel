@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>student registration</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
 </head>
 <body>	
 <div class="container">
@@ -16,7 +16,8 @@
 					<li><a href="/all_user">All user</a></li>
 					<li><a href="/register">Register</a></li>
 					<li><a href="/register">Register</a></li>
-					<li><a href="/student">log in</a></li>
+					<li><a href="/login">log in</a></li>
+					<li><a href="/search">Search</a></li>
 				</ul>
 			  @yield('content')			  
 		</div> 	

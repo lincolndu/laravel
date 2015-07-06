@@ -19,14 +19,12 @@ Route::get('/', function () {
      	));
 });
 
-Route::any('student','StdController@student');
+Route::any('login','StdController@login');
+Route::any('search','StdController@search');
 Route::any('register','StdController@register');
-
-Route::any('do_register','StdController@do_register');
 
 Route::any('all_user','StdController@all_user');
 Route::any('delete/{user}','StdController@delete');
 
 Route::any('edit/{id}','StdController@edit');
-Route::post('update/{id}', 'CrudController@update');
 
