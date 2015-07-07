@@ -8,11 +8,7 @@ use Session;
 
 class StdController extends Controller{
 
-	function login(Request $request){
-		$register = new Register();
-		$register->email=$request->email;
-		$register->password=md5($request->password);
-		$register->save();
+	function login(){
 		return view('login');
 	}
 
@@ -54,7 +50,17 @@ class StdController extends Controller{
 		return view('edit', $edit);
 	}
 	
-	public function search(){
+	public function search(Request $request){
+		if ($request->isMethod('POST')) {
+		$register=Register::all();
+		$register->search($res= $request->email);
+		if ($res) {
+			echo $res;
+		}else{
+			echo "Nothing match";
+		}
+		
+		}
 		return view('search');
 	}
 
