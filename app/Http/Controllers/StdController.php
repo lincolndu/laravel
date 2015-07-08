@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Register;
+use App\Post;
 use Illuminate\Http\Request;
 use Session;
 
@@ -62,6 +63,25 @@ class StdController extends Controller {
             }
         }
         return view('search');
+    }
+
+    public function add_post(Request $request) {
+        
+        if ($request->isMethod('post')) {
+            $post = new Post();
+
+            $post->title = $request->title;
+            $post->photo = public_path(). '/photo/faruk';
+
+            $request->file('photo')->move(public_path() . '/photo', 'faruk');
+
+            $post->description = $request->description;
+            $post->save();
+
+            Session::flash('success_msg', 'Your post has been published');
+            redirect('add_post');
+        }
+        return view('blog.add_post');
     }
 
 }

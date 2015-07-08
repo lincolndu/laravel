@@ -27,4 +27,6 @@ Route::any('all_user','StdController@all_user');
 Route::any('delete/{user}','StdController@delete');
 
 Route::any('edit/{id}','StdController@edit');
+Route::any('add_post','StdController@add_post');
+Route::any('all_post','StdController@all_post');
 

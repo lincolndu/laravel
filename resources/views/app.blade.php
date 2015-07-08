@@ -23,6 +23,8 @@
 					<li><a href="/register">Register</a></li>
 					<li><a href="/login">log in</a></li>
 					<li><a href="/search">Search</a></li>
+                                        <li><a href="/all_post">All Post</a></li>
+                                        <li><a href="/add_post">Add New Post</a></li>
 				</ul>
 			  @yield('content')			  
 		</div> 	
