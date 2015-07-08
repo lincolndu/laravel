@@ -52,12 +52,15 @@ class StdController extends Controller{
 	
 	public function search(Request $request){
 		if ($request->isMethod('POST')) {
-		$register=Register::all();
-		$register->search($res= $request->email);
-		if ($res) {
-			echo $res;
+			
+			$res=$request->email;
+			$search=Register::where('email','LIKE','%'.$res.'%')->first();
+			// $search=$search->email;
+
+		if ($search) {
+			echo $search;
 		}else{
-			echo "Nothing match";
+			echo "Nothing";
 		}
 		
 		}

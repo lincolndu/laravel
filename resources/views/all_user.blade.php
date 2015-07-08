@@ -17,7 +17,7 @@
 					<td><?php echo $user->password; ?></td>
 					<td><?php echo $user->created_at; ?></td>
 					<td><a href="/edit/<?php echo $user->id; ?>">Update</a></td>
-					<td><a href="/delete/<?php echo $user->id; ?>">Delete</a></td>
+					<td><a onclick="return check()" href="/delete/<?php echo $user->id; ?>">Delete</a></td>
 
 				</tr>
 				@endforeach

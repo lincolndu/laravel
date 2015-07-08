@@ -8,11 +8,11 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
 
-    <input value="<?php echo $id->email; ?>" type="email" class="form-control" id="exampleInputEmail1" placeholder="check email" name="email">
+    <input value="<?php echo $id->email; ?>" type="email" class="form-control" id="exampleInputEmail1" name="email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input value="<?php echo $id->password; ?>" type="password" class="form-control" id="exampleInputPassword1" placeholder="Check Password" name="password">
+    <input value="<?php echo $id->password; ?>" type="password" class="form-control" id="exampleInputPassword1" name="password">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 
