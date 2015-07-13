@@ -6,6 +6,7 @@ use App\Register;
 use App\Post;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class StdController extends Controller {
 
@@ -66,22 +67,27 @@ class StdController extends Controller {
     }
 
     public function add_post(Request $request) {
-        
+
         if ($request->isMethod('post')) {
             $post = new Post();
 
             $post->title = $request->title;
-            $post->photo = public_path(). '/photo/faruk';
-
-            $request->file('photo')->move(public_path() . '/photo', 'faruk');
-
+            $post->photo = $request->file('photo')->getClientOriginalName();
+            
+            $request->file('photo')->move(public_path() . '/photo/', $post->photo);
             $post->description = $request->description;
             $post->save();
+
 
             Session::flash('success_msg', 'Your post has been published');
             redirect('add_post');
         }
         return view('blog.add_post');
+    }
+
+    public function all_post() {
+        $data['user_data'] = Post::all();
+        return view('users.all_post', $data);
     }
 
 }
