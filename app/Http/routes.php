@@ -1,32 +1,43 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-Route::get('/', function () {
-	
-     return view('welcome', array(
- 		'items'=>array('item one', 'item two','item three','item four')
- 		
-     	));
-});
+// Route::get('/', function () {
+//      return view('index');
+// });
+//Home page routing
+Route::any('/','StdController@index');
+//Blog page routing
+Route::any('blog','StdController@blog');
+//Gallery page routing
+Route::any('gallery','StdController@gallery');
+//Sing
+Route::any('single/{id}','StdController@single');
+Route::any('newpost','StdController@newpost');
+//Contact form
+Route::any('contact','StdController@contact');
 
-Route::any('login','StdController@login');
-Route::any('search','StdController@search');
-Route::any('register','StdController@register');
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::any('all_user','StdController@all_user');
-Route::any('delete/{user}','StdController@delete');
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+//after login
+Route::get('home', 'StdController@index');
+
+
+//Edit section
+Route::get('dashboard','StdController@dashboard');
+Route::get('delete/{id}','StdController@delete');
 Route::any('edit/{id}','StdController@edit');
+
+
+
 Route::any('add_post','StdController@add_post');
-Route::any('all_post','StdController@all_post');
+
+
+
 
