@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use Pagination;
+use Auth;
 
 class StdController extends Controller {
 
@@ -22,6 +23,7 @@ class StdController extends Controller {
             } 
         }
        $data['posts']= Post::limit(3)->latest()->get();
+       $data['vertical_posts']= Post::limit(4)->latest()->get();
        return view('index',$data);
     }
 
@@ -59,6 +61,7 @@ class StdController extends Controller {
         if ($request->isMethod('post')) {
             $register= new Post();
             $register->title=$request->title;
+            $register->author=Auth::user()->name;
             $register->photo = $request->file('photo')->getClientOriginalName();
             $request->file('photo')->move(public_path() . '/photo/',$register->photo);
             $register->d_post=$request->d_post;
