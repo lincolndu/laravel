@@ -37,6 +37,7 @@ Route::any('edit/{id}','StdController@edit');
 
 Route::any('add_post','StdController@add_post');
 
+Route::any('comments','StdController@comments');
 
 
 

@@ -10,12 +10,21 @@
 					<article>
 						<img src="{{'/photo/'.$id->photo}}"/>
 						<h2><a href="/single/{{$id->id}}">{{$id->title}}</a></h2>
-						<div class="info">[By Admin on {{date('F d, Y'),$id->created_at}} with <a href="#">01 Commnets</a>]</div>
+						<div class="info">[By Admin on {{date('F d, Y'),$id->created_at}} with <a href="#">{{$count}} Comments</a>]</div>
 						<p>{{$id->d_post}}</p>
+						
+						<div>
+						@foreach($comments as $comment)
+							<h3>Commenter: {{$comment->name}}</h3>
+							<p>{{$comment->comment}}</p>
+						@endforeach		
+						</div>
+						
 						<div class="comment">
 							Your email address will not be published. Required fields are marked *
-							<form action="contact" method="post">
+							<form action="/comments" method="post">
 							  <input type="hidden" name="_token" value="{{csrf_token()}}">
+							  <input type="hidden" name="post_id" value="{{$id->id}}">
 								<div><input type="text" name="name" id="name"> Name *</div>
 								<div><input type="email" name="email" id="email"> Email *</div>
 								<div><input type="url" name="website" id="website"> Website</div>

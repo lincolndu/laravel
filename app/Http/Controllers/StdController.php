@@ -38,8 +38,11 @@ class StdController extends Controller {
     }
 
     public function single($id){
-        $post['id']=Post::find($id);
-       return view('single', $post);
+        $data['id']=Post::find($id);
+
+        $data['comments']= Comment::where('post_id', $id)->get();
+        $data['count'] = count($data['comments']);
+       return view('single', $data);
     }
 
     public function contact(Request $request){
@@ -55,6 +58,23 @@ class StdController extends Controller {
             return redirect('contact');
         }
        return view('contact');
+    }
+
+    public function comments(Request $request){
+        if ($request->isMethod('POST')) {
+            // echo $request->post_id;die();
+            $register= new Comment();
+            $register->name=$request->name;
+            $register->email=$request->email;
+            $register->website=$request->website;
+            $register->comment=$request->comment;
+            $register->post_id=$request->post_id;
+            $register->save();
+
+            Session::flash('success_msg','Your comment has been successfully submitted, just wait, it will publish soon');
+            return redirect()->back();
+        }
+       // return view('contact');
     }
 
     public function newpost(Request $request){
