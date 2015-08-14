@@ -22,7 +22,12 @@ class StdController extends Controller {
                 return view('post.search', $data);
             } 
         }
-       $data['posts']= Post::limit(3)->latest()->get();
+       $data['posts']= Post::posts();
+       
+        $data['comments']= Comment::all();     
+       
+       // echo '<pre>';print_r($comments);die();
+
        $data['vertical_posts']= Post::limit(4)->latest()->get();
        return view('index',$data);
     }

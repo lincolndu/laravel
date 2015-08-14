@@ -45,7 +45,15 @@
 						<div class="col-2-3">
 							<div class="wrap-col">
 								<h2><a href="/single/{{$post->id}}">{{str_limit($post->title, $limit=40, $end='..')}}</a></h2>
-								<div class="info">By Admin on {{date('F d, Y'),$post->created_at}} with <a href="#">01 Commnets</a></div>
+								<div class="info">By Admin on {{date('F d, Y'),$post->created_at}} with <a href="#">
+								<?php 
+								$comm = array();
+								foreach($comments as $comment){
+									if($post->id == $comment['post_id']){
+										$comm[] = $comment['post_id'];
+									}
+								} echo count($comm);
+									?></a></div>
 								<p>{{str_limit($post->d_post, $limit=150, $end='')}}[...]</p>
 							</div>
 						</div>
